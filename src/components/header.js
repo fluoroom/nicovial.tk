@@ -1,42 +1,22 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
+import { Link } from 'gatsby'
+import React from 'react'
+import FbImg from '../images/fb.png'
+import InstaImg from '../images/insta.png'
+import BehImg from '../images/beh.png'
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
+const Header = () => {
+  return (
+    <header>
+      <h1><Link to='/'>Nico Vial</Link></h1>
+      <nav>
+        <ul>
+          <li><a href="https://www.instagram.com/rytratt/" rel='noreferrer' target="_blank"><img src={InstaImg} alt="" /></a></li>
+          <li><a href="https://www.facebook.com/rytratt" rel='noreferrer' target="_blank"><img src={FbImg} alt="" /></a></li>
+          <li><a href="https://www.behance.net/nicovial" rel='noreferrer' target="_blank"><img src={BehImg} alt="" /></a></li>
+        </ul>
+      </nav>
+    </header>
+  )
 }
 
 export default Header
