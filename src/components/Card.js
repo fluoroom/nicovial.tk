@@ -81,7 +81,7 @@ const IndexPage = ({ src, title, link }) => {
       }
     }
       `}</style>
-    <div className="card"><Link to={link}><img alt="" src={'http://'+src.substring(2)}/><h2>{title0}<br/><span className="small">{title1}</span></h2></Link></div>
+    <div className="card"><Link to={link}><img alt="" src={src}/><h2>{title0}<br/><span className="small">{title1}</span></h2></Link></div>
     </>
 )
     }
