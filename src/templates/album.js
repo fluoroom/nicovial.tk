@@ -9,7 +9,8 @@ const AlbumPage = ({ pageContext }) => {
   var title= pageContext.data.title.split('(');
   title0= title[0];
   if(title[1]){
-  title1= '('+title[1];}
+  title1= '('+title[1];
+  title0=title0.slice(0,-1);}
 
 return(
     <Layout>

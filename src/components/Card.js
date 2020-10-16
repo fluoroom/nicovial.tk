@@ -10,7 +10,8 @@ const IndexPage = ({ src, title, link }) => {
   title= title.split('(');
   title0= title[0];
   if(title[1]){
-  title1= '('+title[1];}
+  title1= '('+title[1];
+  title0=title0.slice(0,-1);  }
 
   return(
     <>
@@ -43,6 +44,9 @@ const IndexPage = ({ src, title, link }) => {
       .small{
         font-size:0.6em;
       }
+      br{
+        width:0px;
+      }
     }
     @media(max-width:900px){
       .card{
@@ -59,6 +63,9 @@ const IndexPage = ({ src, title, link }) => {
         z-index:8;
         box-shadow:0px 0px 30px 10px black;
         border-radius:1px;
+      }
+      br{
+        width:0px;
       }
       .card>a>h2{
         position:absolute;
