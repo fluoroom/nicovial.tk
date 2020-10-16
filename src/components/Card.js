@@ -1,10 +1,21 @@
 import React from 'react'
+import { Link } from 'gatsby'
 
-const IndexPage = ({ src, title }) => {
+const IndexPage = ({ src, title, link }) => {
+  var title0;
+  var title1;
+  if(!title){
+    title = ' ';
+  }
+  title= title.split('(');
+  title0= title[0];
+  if(title[1]){
+  title1= '('+title[1];}
 
   return(
     <>
     <style jsx>{`
+    @media(min-width:901px){
       .card{
         position:relative;
         margin-left:6em;
@@ -12,23 +23,65 @@ const IndexPage = ({ src, title }) => {
       .card:last-child{
         margin-right:6em;
       }
-      .card>img{
+      .card>a>img{
         max-height:70vh;
         z-index:8;
         box-shadow:0px 0px 30px 10px black;
         border-radius:1px;
       }
-      .card>h2{
+      .card>a>h2{
         position:absolute;
         top:50%;
         left:50%;
         transform:translate(-50%,-50%);
         font-size:3em;
         text-align:center;
+        width:100%;
+        vertical-align:middle;
         text-shadow:0px 0px 0.2em black, 0px 0px 0.2em black, 0px 0px 0.2em black;
       }
+      .small{
+        font-size:0.6em;
+      }
+    }
+    @media(max-width:900px){
+      .card{
+        position:relative;
+        margin-left:3em;
+        margin-top:4em;
+      }
+      .card:last-child{
+        margin-right:3em;
+      }
+      .card>a>img{
+        max-height:65vh;
+        max-width:100vw;
+        z-index:8;
+        box-shadow:0px 0px 30px 10px black;
+        border-radius:1px;
+      }
+      .card>a>h2{
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        font-size:3em;
+        text-align:center;
+        width:100%;
+        vertical-align:middle;
+        text-shadow:0px 0px 0.2em black, 0px 0px 0.2em black, 0px 0px 0.2em black;
+      }
+      .small{
+        font-size:0.6em;
+      }
+    }
+    @media(max-width:900px) and (orientation:landscape){
+      .card{
+        margin-top:1em;
+      }
+    }
       `}</style>
-    <div className="card"><img alt="" src={src}/><h2>{title}</h2></div>
+    <div className="card"><Link to={link}><img alt="" src={'http://'+src.substring(2)}/><h2>{title0}<br/><span className="small">{title1}</span></h2></Link></div>
     </>
 )
     }

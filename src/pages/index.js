@@ -5,10 +5,10 @@ import { StaticQuery, graphql } from "gatsby"
 import Card from '../components/Card'
 
 const IndexPage = () => {
-
   return(
   <Layout>
     <style jsx>{`
+    @media(min-width:901px){
       #gallerycontainerouter{
         height:100vh;
         width:100vw;
@@ -37,31 +37,60 @@ const IndexPage = () => {
       #gallery:after{
         content:' ‎';
       }
+    }
+      @media(max-width:900px){
+        #gallerycontainerouter{
+          height:100vh;
+          width:100vw;
+          overflow:hidden;
+          position:relative;
+        }
+        #gallerycontainer{
+          scrollbar-width:none;
+          overflow-x:auto;
+        }
+        ::-webkit-scrollbar {
+          display: none;
+      }
+        #gallery{
+          display:flex;
+          align-items:center;
+          flex-direction:row;
+          justify-content:flex-start;
+          height:100vh;
+        }
+        #gallery:after{
+          content:' ‎';
+        }
+      }
     `}
     </style>
-    <SEO title='Home' />
+    <SEO />
     <div id="gallerycontainerouter">
     <div id="gallerycontainer">
     <div id="gallery">
       <StaticQuery
         query={graphql`
-        query ALbums {
-          allStrapiAlbum {
+        query Albums {
+          allContentfulAlbum {
             nodes {
-              Cover {
-                publicURL
+              cover {
+                file {
+                  url
+                }
               }
-              Title
+              title
+              contentful_id
             }
           }
         }
       `} 
       render={data=>
-      data.allStrapiAlbum.nodes.map(album => {
-        return(
-        <Card src={album.Cover.publicURL} title={album.Title}/>
+      data.allContentfulAlbum.nodes.map((album, index) => {
+        return (
+        <Card src={album.cover.file.url} title={album.title} link={'/album/'+(index+1)} />
         )
-      })
+        })
       } />
     </div></div></div>
   </Layout>
