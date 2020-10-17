@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
-const Gallery = ({children, useEffect}) => {
+const Gallery = ({children}) => {
   useEffect(()=>{
     let vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
