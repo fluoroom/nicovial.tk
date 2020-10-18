@@ -18,16 +18,14 @@ const path = require(`path`)
       }
     }
     `);
-    let id = 1;
     result.data.allContentfulAlbum.edges.forEach(({ node }) => {
       createPage({
-        path: `/album/${id}`,
+        path: `/album/${node.contentful_id}`,
         component: path.resolve(`./src/templates/album.js`),
         context: {
           data: node,
         },
       });
-      id++;
     })
   }; 
   
