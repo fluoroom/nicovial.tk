@@ -6,13 +6,13 @@ import Card from '../components/Card'
 import Gallery from '../components/Gallery'
 
 const IndexPage = ({data}) => {
-  function shuffleArray(array){
+  /*function shuffleArray(array){
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
 } 
-  shuffleArray(data.allContentfulAlbum.nodes);
+  shuffleArray(data.allContentfulAlbum.nodes);*/
   return(
   <Layout>
     <SEO />
