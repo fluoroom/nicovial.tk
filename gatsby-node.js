@@ -1,4 +1,7 @@
 const path = require(`path`)
+function linkify(string){
+  return string.toLowerCase().replace(/["'()]/g,"").replace(/\s/g, '-');
+}
  exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions
     const result = await graphql(`
@@ -20,7 +23,7 @@ const path = require(`path`)
     `);
     result.data.allContentfulAlbum.edges.forEach(({ node }) => {
       createPage({
-        path: `/album/${node.contentful_id}`,
+        path: `/album/${linkify(node.title)}`,
         component: path.resolve(`./src/templates/album.js`),
         context: {
           data: node,

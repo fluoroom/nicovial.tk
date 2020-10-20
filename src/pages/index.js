@@ -7,7 +7,9 @@ import Gallery from '../components/Gallery'
 import shuffle from 'lodash/shuffle'
 
 const IndexPage = ({data}) => {
-
+  function linkify(string){
+    return string.toLowerCase().replace(/["'()]/g,"").replace(/\s/g, '-');
+  }
   return(
   <Layout>
     <SEO />
@@ -15,7 +17,7 @@ const IndexPage = ({data}) => {
       {
       data.allContentfulAlbum.nodes.map((album) => {
         return (
-        <Card src={album.cover.file.url} title={album.title} link={'/album/'+album.contentful_id} />
+        <Card src={album.cover.file.url} title={album.title} link={'/album/'+linkify(album.title)} />
         )
         })}
     </Gallery>
@@ -35,7 +37,6 @@ query Albums {
         }
       }
       title
-      contentful_id
     }
   }
 }
