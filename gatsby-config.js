@@ -15,6 +15,19 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Nico Vial | Portfolio`,
+        short_name: `Nico Vial`,
+        lang:`en`,
+        start_url: `/`,
+        background_color: `#000000`,
+        theme_color: `#ffffff`,
+        icon: `src/images/icon.png`,
+        display: `standalone`,
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,

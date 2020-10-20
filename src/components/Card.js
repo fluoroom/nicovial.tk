@@ -28,7 +28,7 @@ const IndexPage = ({ src, title, link }) => {
         max-height:70vh;
         z-index:8;
         box-shadow:0px 0px 30px 10px black;
-        border-radius:1px;
+        border-radius:2px;
       }
       .card>a>h2{
         position:absolute;

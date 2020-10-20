@@ -4,7 +4,7 @@ import SEO from '../components/seo'
 import { graphql } from "gatsby"
 import Card from '../components/Card'
 import Gallery from '../components/Gallery'
-import _ from 'lodash'
+import shuffle from 'lodash/shuffle'
 
 const IndexPage = ({data}) => {
 
