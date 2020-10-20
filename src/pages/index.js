@@ -13,7 +13,7 @@ const IndexPage = ({data}) => {
     <SEO />
     <Gallery>
       {
-      _.shuffle(data.allContentfulAlbum.nodes).map((album) => {
+      data.allContentfulAlbum.nodes.map((album) => {
         return (
         <Card src={album.cover.file.url} title={album.title} link={'/album/'+album.contentful_id} />
         )
