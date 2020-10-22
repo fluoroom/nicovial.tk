@@ -1,21 +1,33 @@
-import React from 'react'
+import React, { useLayoutEffect, useEffect, useState } from 'react'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { graphql } from "gatsby"
 import Card from '../components/Card'
 import Gallery from '../components/Gallery'
-import shuffle from 'lodash/shuffle'
+import Img from "gatsby-image"
 
-const IndexPage = ({data}) => {
-  function linkify(string){
-    return string.toLowerCase().replace(/["'()]/g,"").replace(/\s/g, '-');
+function linkify(string){
+  return string.toLowerCase().replace(/["'()]/g,"").replace(/\s/g, '-');
+}
+function shuffleArray(array) {
+  let tempArray = array;
+  for (let i = tempArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [tempArray[i], tempArray[j]] = [tempArray[j], tempArray[i]];
   }
+  return tempArray;
+}
+const IndexPage = ({data}) => {
+  const [shuffled,setShuffled] = useState([]);
+  useLayoutEffect(() => {
+    setShuffled(shuffleArray(data.allContentfulAlbum.nodes));
+  })
   return(
   <Layout>
     <SEO />
     <Gallery>
       {
-      data.allContentfulAlbum.nodes.map((album) => {
+      shuffled.map((album, index) => {
         return (
         <Card src={album.cover.file.url} title={album.title} link={'/album/'+linkify(album.title)} />
         )
@@ -32,7 +44,7 @@ query Albums {
   allContentfulAlbum {
     nodes {
       cover {
-        file {
+        file{
           url
         }
       }

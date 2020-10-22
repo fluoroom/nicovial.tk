@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import Img from "gatsby-image"
 
 const IndexPage = ({ src, title, link }) => {
   var title0;
@@ -58,11 +59,11 @@ const IndexPage = ({ src, title, link }) => {
         margin-right:3em;
       }
       .card>a>img{
-        max-height:65vh;
+        max-height:70vh;
         max-width:100vw;
         z-index:8;
         box-shadow:0px 0px 30px 10px black;
-        border-radius:1px;
+        border-radius:2px;
       }
       br{
         width:0px;
@@ -86,9 +87,12 @@ const IndexPage = ({ src, title, link }) => {
       .card{
         margin-top:1em;
       }
+      .card>a>h2{
+        font-size:2em;
+      }
     }
       `}</style>
-    <div className="card"><Link to={link}><img alt="" src={src}/><h2>{title0}<br/><span className="small">{title1}</span></h2></Link></div>
+    <div className="card"><Link to={link}><img src={src}/><h2>{title0}<br/><span className="small">{title1}</span></h2></Link></div>
     </>
 )
     }
