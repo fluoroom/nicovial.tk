@@ -27,6 +27,7 @@ const IndexPage = ({ src, title, link }) => {
       }
       .card>a>img{
         max-height:70vh;
+        max-width:100vw;
         z-index:8;
         box-shadow:0px 0px 30px 10px black;
         border-radius:2px;
