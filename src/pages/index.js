@@ -1,10 +1,9 @@
-import React, { useLayoutEffect, useEffect, useState } from 'react'
+import React, { useLayoutEffect, useState } from 'react'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { graphql } from "gatsby"
 import Card from '../components/Card'
 import Gallery from '../components/Gallery'
-import Img from "gatsby-image"
 
 function linkify(string){
   return string.toLowerCase().replace(/["'()]/g,"").replace(/\s/g, '-');
@@ -21,7 +20,7 @@ const IndexPage = ({data}) => {
   const [shuffled,setShuffled] = useState([]);
   useLayoutEffect(() => {
     setShuffled(shuffleArray(data.allContentfulAlbum.nodes));
-  })
+  }, [data.allContentfulAlbum.nodes])
   return(
   <Layout>
     <SEO />

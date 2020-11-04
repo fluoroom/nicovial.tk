@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useLayoutEffect} from 'react'
 
-const Gallery = ({children}) => {
+const Gallery = ({leftPadding, children}) => {
   useEffect(()=>{
     let vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -9,6 +9,9 @@ const Gallery = ({children}) => {
     document.documentElement.style.setProperty('--vh', `${vh}px`);
   });
   })
+  useLayoutEffect(()=>{
+  if(leftPadding){document.getElementById('gallery').style.paddingLeft='65vw'};
+});
   return(
       <>
     <style jsx>{`
@@ -18,7 +21,8 @@ const Gallery = ({children}) => {
         height: calc(var(--vh, 1vh) * 100);
         width:100vw;
         overflow:hidden;
-        position:relative;
+        position:absolute;
+        z-index:9;
       }
       #gallerycontainer{
         transform:rotate(270deg) translateY(-100%);
@@ -50,6 +54,7 @@ const Gallery = ({children}) => {
           width:100vw;
           overflow:hidden;
           position:relative;
+          z-index:9;
         }
         #gallerycontainer{
           scrollbar-width:none;

@@ -2,6 +2,7 @@ import React from 'react'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import Card from '../components/Card'
+import Gallery from '../components/Gallery'
 
 const AlbumPage = ({ pageContext }) => {
   var title0;
@@ -11,88 +12,50 @@ const AlbumPage = ({ pageContext }) => {
   if(title[1]){
   title1= '('+title[1];
   title0=title0.slice(0,-1);}
+  var description;
+  if(!pageContext.data.childContentfulAlbumTextRichTextNode){
+    description='';
+  }else{
+    description=pageContext.data.childContentfulAlbumTextRichTextNode.childContentfulRichText.html;
+  }
 
 return(
     <Layout>
     <style jsx>{`
     @media(min-width:901px){
-      #gallerycontainerouter{
-        height:100vh;
-        width:100vw;
-        overflow:hidden;
-        position:relative;
-      }
-      #gallerycontainer{
-        transform:rotate(270deg) translateY(-100%);
-        transform-origin:top right;
-        scrollbar-width:none;
-        overflow-x:auto;
-        height:100vw;
-      }
-      ::-webkit-scrollbar {
-        display: none;
-    }
-      #gallery{
-        display:flex;
-        align-items:center;
-        flex-direction:row;
-        justify-content:flex-start;
-        transform:rotate(90deg) translateX(100%);
-        transform-origin:top right;
-        height:100vh;
-        padding-left:35vw;
-      }
-      #gallery:after{
-        content:' ‎';
-      }
-      #galleryTitle{
+      #galleryText{
         position: absolute;
         text-align: center;
         top: 0;
         left: 0;
         height: 100vh;
         display: flex;
+        z-index:1;
         align-items: center;
         width: 35vw;
         justify-content: center;
         margin-left: 2em;
+        flex-direction:column;
     }
-    #galleryTitle>h2{
+    #galleryText>h2{
       font-size:4.5em;
       text-align:center;
       vertical-align:middle;
+      margin-bottom:0.5em;
       text-shadow:0px 0px 0.2em black, 0px 0px 0.2em black, 0px 0px 0.2em black;
+    }
+    #galleryText p{
+      display:block;
+    }
+    #galleryText p a{
+      text-decoration:underline;
     }
     .small{
       font-size:0.6em;
     }
   }
   @media(max-width:900px){
-    #gallerycontainerouter{
-      height:100vh;
-      width:100vw;
-      overflow:hidden;
-      position:relative;
-    }
-    #gallerycontainer{
-      scrollbar-width:none;
-      overflow-x:auto;
-    }
-    ::-webkit-scrollbar {
-      display: none;
-  }
-    #gallery{
-      display:flex;
-      align-items:center;
-      flex-direction:row;
-      justify-content:flex-start;
-      height:100vh;
-      padding-left:65vw;
-    }
-    #gallery:after{
-      content:' ‎';
-    }
-    #galleryTitle{
+    #galleryText{
       position: absolute;
       text-align: center;
       top: 0;
@@ -103,12 +66,20 @@ return(
       width: 65vw;
       justify-content: center;
       margin-left: 1.5em;
+        flex-direction:column;
   }
-  #galleryTitle>h2{
+  #galleryText>h2{
     font-size:4.5em;
     text-align:center;
     vertical-align:middle;
+    margin-bottom:0.5em;
     text-shadow:0px 0px 0.2em black, 0px 0px 0.2em black, 0px 0px 0.2em black;
+  }
+  #galleryText p{
+    display:block;
+  }
+  #galleryText p a{
+    text-decoration:underline;
   }
   .small{
     font-size:0.6em;
@@ -117,17 +88,14 @@ return(
     `}
     </style>
     <SEO title={pageContext.data.title} />
-    <div id="galleryTitle"><h2>{title0}<br/><span className="small">{title1}</span></h2></div>
-    <div id="gallerycontainerouter">
-    <div id="gallerycontainer">
-    <div id="gallery">
-    
+<div id="galleryText"><h2>{title0}<br/><span className="small">{title1}</span></h2><div dangerouslySetInnerHTML={{__html: description}}></div></div>
+    <Gallery leftPadding>
       {pageContext.data.photos.map(photo => {
         return(
         <Card src={photo.file.url} />
         )
       })}
-    </div></div></div>
+    </Gallery>
   </Layout>
 )
 }

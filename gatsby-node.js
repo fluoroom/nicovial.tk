@@ -11,6 +11,11 @@ function linkify(string){
           node {
             contentful_id
             title
+            childContentfulAlbumTextRichTextNode {
+              childContentfulRichText {
+                html
+              }
+            }
             photos {
               file {
                 url
@@ -20,6 +25,7 @@ function linkify(string){
         }
       }
     }
+    
     `);
     result.data.allContentfulAlbum.edges.forEach(({ node }) => {
       createPage({

@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'gatsby'
-import Img from "gatsby-image"
 
 const IndexPage = ({ src, title, link }) => {
   var title0;
@@ -28,7 +27,7 @@ const IndexPage = ({ src, title, link }) => {
       .card>a>img{
         max-height:70vh;
         max-width:100vw;
-        z-index:8;
+        position:relative;
         box-shadow:0px 0px 30px 10px black;
         border-radius:2px;
       }
@@ -62,7 +61,6 @@ const IndexPage = ({ src, title, link }) => {
       .card>a>img{
         max-height:70vh;
         max-width:100vw;
-        z-index:8;
         box-shadow:0px 0px 30px 10px black;
         border-radius:2px;
       }

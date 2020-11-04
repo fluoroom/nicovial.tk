@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
         background-size:cover;
         height:100vh;
         width:100vw;
-        z-index:-1;
+        z-index:-10;
         position:fixed;
       }
     `}</style>

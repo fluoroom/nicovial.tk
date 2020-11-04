@@ -6,6 +6,13 @@ module.exports = {
     author: '@gatsbyjs'
   },
   plugins: [
+    {
+      resolve: '@contentful/gatsby-transformer-contentful-richtext',
+      options: {
+        renderOptions: {
+        },
+      },
+    },
     'gatsby-plugin-react-helmet',
      {
       resolve: `gatsby-source-contentful`,
