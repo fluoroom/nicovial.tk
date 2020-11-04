@@ -10,7 +10,15 @@ const Gallery = ({leftPadding, children}) => {
   });
   })
   useLayoutEffect(()=>{
-  if(leftPadding){document.getElementById('gallery').style.paddingLeft='65vw'};
+  const mediaQuery = window.matchMedia('(min-width: 901px)')
+  if(leftPadding){
+    if(mediaQuery.matches){
+      document.getElementById('gallery').style.paddingLeft='35vw'
+    }else{
+      document.getElementById('gallery').style.paddingLeft='65vw'
+    }
+  
+  };
 });
   return(
       <>
