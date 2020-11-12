@@ -1,4 +1,7 @@
 const path = require(`path`)
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 module.exports = {
   siteMetadata: {
     title: 'Nico Vial - Portfolio',
@@ -17,8 +20,8 @@ module.exports = {
      {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: `kkqbqm4hi2mi`,
-        accessToken: `9TeIhvGmpq_sCPoYBtHFQIBxKVL9RlpmosUGx1uGvfQ`,
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
     {

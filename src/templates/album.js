@@ -66,7 +66,7 @@ return(
       width: 65vw;
       justify-content: center;
       margin-left: 1.5em;
-        flex-direction:column;
+      flex-direction:column;
   }
   #galleryText>h2{
     font-size:4.5em;
